@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Przemysław Warzecha - Unity Developer</title>
+<meta name="description" content="Portfolio of Przemysław Warzecha, Unity developer building mobile, PC and VR games.">
+<meta property="og:title" content="Przemysław Warzecha - Unity Developer">
+<meta property="og:description" content="Mobile, PC and VR games built in Unity - from prototype to store release.">
+<meta property="og:image" content="https://play-lh.googleusercontent.com/sDYF9hkz-DMkwyJVcksbzY6OVCxbDZRd1XmpLGrCpsslCF_5M-FLduRfK4wiYgurGP63z_SwkhNtIVDdAwDGEA=w1052-h592">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d12; --bg2:#11141b; --card:#151922; --line:#232937;
+    --text:#e8ebf2; --muted:#8b93a7; --accent:#5ee1ff; --accent2:#7c6cff;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .mono{font-family:"JetBrains Mono",monospace}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,13,18,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:"Space Grotesk";font-weight:700;font-size:18px;letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--muted)}
+  nav ul a:hover{color:var(--text)}
+
+  /* hero */
+  header{position:relative;overflow:hidden;padding:120px 0 100px}
+  header::before{content:"";position:absolute;inset:-40% -20% auto auto;width:780px;height:780px;
+    background:radial-gradient(circle,rgba(124,108,255,.22),transparent 60%);pointer-events:none}
+  header::after{content:"";position:absolute;inset:auto auto -50% -15%;width:700px;height:700px;
+    background:radial-gradient(circle,rgba(94,225,255,.12),transparent 60%);pointer-events:none}
+  .eyebrow{color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+  h1{font-family:"Space Grotesk";font-size:clamp(42px,7vw,80px);line-height:1.02;letter-spacing:-.035em;font-weight:700;max-width:900px}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{margin-top:28px;font-size:19px;color:var(--muted);max-width:640px}
+  .cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;transition:.2s}
+  .btn.primary{background:var(--text);color:var(--bg)}
+  .btn.primary:hover{background:var(--accent)}
+  .btn.ghost{border:1px solid var(--line);color:var(--text)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .stats{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .stat{background:var(--bg);padding:24px}
+  .stat b{display:block;font-family:"Space Grotesk";font-size:32px;letter-spacing:-.02em}
+  .stat span{color:var(--muted);font-size:13px}
+
+  section{padding:100px 0}
+  .sec-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+  h2{font-family:"Space Grotesk";font-size:clamp(32px,4vw,44px);letter-spacing:-.03em;line-height:1.1}
+  .sec-head p{color:var(--muted);max-width:440px}
+  .label{color:var(--accent);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+
+  /* featured */
+  .featured{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.25fr 1fr}
+  .featured .media{position:relative;min-height:420px;background:#000}
+  .featured .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .featured .media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--card))}
+  .featured .body{padding:44px 40px;display:flex;flex-direction:column}
+  .game-top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .icon{width:56px;height:56px;border-radius:14px;flex-shrink:0;background:var(--line)}
+  .game-top h3{font-family:"Space Grotesk";font-size:26px;letter-spacing:-.02em;line-height:1.15}
+  .game-top small{color:var(--muted);font-size:13px}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+  .badge{font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .badge.hl{border-color:rgba(94,225,255,.35);color:var(--accent);background:rgba(94,225,255,.06)}
+  .desc{color:var(--muted);font-size:15px}
+  .contrib{margin:20px 0 26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:14px}
+  .contrib li{list-style:none;padding-left:18px;position:relative}
+  .contrib li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent2)}
+  .link{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--accent)}
+  .link:hover{gap:12px}
+  .link{transition:gap .2s}
+
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+  .strip img{border-radius:12px;aspect-ratio:16/9;object-fit:cover;width:100%;border:1px solid var(--line);background:var(--card)}
+
+  /* grid cards */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+  .card:hover{transform:translateY(-4px);border-color:#34405a}
+  .card .thumb{aspect-ratio:16/9;overflow:hidden;background:#000}
+  .card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .card:hover .thumb img{transform:scale(1.04)}
+  .card .body{padding:22px;display:flex;flex-direction:column;flex:1}
+  .card .game-top{margin-bottom:12px}
+  .card .game-top h3{font-size:20px}
+  .card .icon{width:44px;height:44px;border-radius:11px}
+  .card .desc{font-size:14px;margin-bottom:16px}
+  .card ul.contrib{grid-template-columns:1fr;margin:0 0 20px;font-size:13.5px}
+  .card .thumb.duo{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  .card .thumb.duo img{aspect-ratio:16/9}
+  .card.wide{flex-direction:row;align-items:center}
+  .card.wide .thumb{width:38%;flex-shrink:0}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .skill h4{font-family:"Space Grotesk";font-size:17px;margin-bottom:12px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:12.5px;padding:4px 10px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);color:#c3c9d6}
+
+  /* timeline */
+  .timeline{display:grid;gap:16px}
+  .job{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+  .job .when{color:var(--muted);font-size:13px}
+  .job h3{font-family:"Space Grotesk";font-size:22px;letter-spacing:-.02em}
+  .job .co{color:var(--accent);font-size:14px;margin-bottom:10px}
+  .job p{color:var(--muted);font-size:15px}
+
+  /* contact */
+  .contact{text-align:center;padding:120px 0 140px;border-top:1px solid var(--line)}
+  .contact h2{font-size:clamp(36px,5vw,60px);margin-bottom:18px}
+  .contact p{color:var(--muted);margin-bottom:36px}
+  .contact .cta{justify-content:center}
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    nav ul{display:none}
+    .stats{grid-template-columns:1fr}
+    .featured{grid-template-columns:1fr}
+    .featured .media{min-height:240px}
+    .featured .media::after{background:linear-gradient(180deg,transparent 60%,var(--card))}
+    .featured .body{padding:28px}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .grid,.grid.two,.skills{grid-template-columns:1fr}
+    .job{grid-template-columns:1fr;gap:8px}
+    .card .thumb.duo{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  .card .thumb.duo img{aspect-ratio:16/9}
+  .card.wide{flex-direction:column;align-items:stretch}
+    .card.wide .thumb{width:100%}
+    .contrib{grid-template-columns:1fr}
+    header{padding:80px 0 70px}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">PW<span>.</span></a>
+    <ul>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow mono">Unity Developer · Mobile · PC · VR</div>
+    <h1>Przemysław Warzecha.<br>I build games from <em>prototype to release.</em></h1>
+    <p class="lead">Unity &amp; C# developer with 5 years of commercial experience. I work on code architecture, gameplay systems, UI, SDK integration and performance - across mobile hits, Steam titles and VR.</p>
+    <div class="cta">
+      <a href="#games" class="btn primary">See my games ↓</a>
+      <a href="https://github.com/pwarzecha" target="_blank" rel="noopener" class="btn ghost">GitHub</a>
+      <a href="mailto:przemek21.warzecha@gmail.com" class="btn ghost">Email me</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>5+</b><span>years in commercial gamedev</span></div>
+      <div class="stat"><b>7</b><span>shipped titles</span></div>
+      <div class="stat"><b>15M+</b><span>downloads on Google Play</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="games">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="label mono">Featured</div><h2>Frost World</h2></div>
+      <p>The biggest project I've worked on - I was one of the main developers behind its core systems and gameplay.</p>
+    </div>
+
+    <div class="featured reveal">
+      <div class="media">
+        <img src="https://play-lh.googleusercontent.com/sDYF9hkz-DMkwyJVcksbzY6OVCxbDZRd1XmpLGrCpsslCF_5M-FLduRfK4wiYgurGP63z_SwkhNtIVDdAwDGEA=w1052-h592" alt="Frost World gameplay" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="game-top">
+          <img class="icon" src="https://play-lh.googleusercontent.com/H3LSpiBHE9GO5wt9oq0iEJIIxR033zYOSRCJu6OsXfnunu4LfQH53y7LVwOcfSMn09K-Gl-nYyvW-Mi2Rm0A=w240-h480" alt="Frost World icon">
+          <div><h3>Frost World: Winter Survival</h3><small>Estoty · Android, iOS</small></div>
+        </div>
+        <div class="badges">
+          <span class="badge">★ 4.1 · 180k+ reviews</span>
+          <span class="badge">Core developer</span>
+        </div>
+        <p class="desc">A survival crafting game set in a frozen post-apocalyptic world. I built a large share of its core systems and most of the gameplay layer:</p>
+        <ul class="contrib">
+          <li>Core game systems</li>
+          <li>Gameplay mechanics</li>
+          <li>Combat</li>
+          <li>Inventory</li>
+          <li>Shop &amp; in-app purchases</li>
+          <li>Battle pass</li>
+          <li>UI system (MVVM)</li>
+          <li>Save system (local / cloud)</li>
+          <li>SDK integration</li>
+          <li>Performance optimization</li>
+        </ul>
+        <a class="link" href="https://play.google.com/store/apps/details?id=com.winter.breaker" target="_blank" rel="noopener">View on Google Play →</a>
+      </div>
+    </div>
+    <div class="strip reveal">
+      <img src="https://play-lh.googleusercontent.com/cTCmqBzglG0HUYeZNBX0gx4lAUGB8quBOglRykxidpaCkPEVqKLzS53paxHFMcuxwGa8aXfudJ_IxHOJ8gCVug=w526-h296" alt="Frost World screenshot" loading="lazy">
+      <img src="https://play-lh.googleusercontent.com/DHKCudkZEuEsCpFBG2XFidb26WLouT1Mn1MUuXddfGYU1u9K3iAiwuGGiw-oOMaI5dek9MNQOqUiRr2qYC-y2g=w526-h296" alt="Frost World screenshot" loading="lazy">
+      <img src="https://play-lh.googleusercontent.com/5l2gL9-RX8lfU1gxP41ix_BZUV29ftTeHMDBVot4IN4TyXU_650_W7XSmGYT0bTTesifOX4_3YngnML-uo2ahfY=w526-h296" alt="Frost World screenshot" loading="lazy">
+      <img src="https://play-lh.googleusercontent.com/ajpwUEe-v-dI9wVHFZGw33O7PGoFDA7e-1ZagJXfEX_ugEwotj6qVskTMw3drUGSOhrTUSWfgIF2pPRdhvA40Q=w526-h296" alt="Frost World screenshot" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="label mono">Mobile · Estoty</div><h2>More mobile games</h2></div>
+      <p>Two of these I led as the solo developer, from the first prototype to store release.</p>
+    </div>
+    <div class="grid two">
+      <a class="card reveal" href="https://play.google.com/store/apps/details?id=com.bakery.life" target="_blank" rel="noopener">
+        <div class="thumb duo"><img src="https://play-lh.googleusercontent.com/DHPe7I_2ufp4fv8b-G7dOnR5fY0ZhWjgGEcGK7e_tpgrVxu54k7YaRb6zVQeWGNK9CvDN9W1Bcf4nHGfFw97=w1052-h592" alt="Bakery Life screenshot" loading="lazy"><img src="https://play-lh.googleusercontent.com/tfXT1QMEp8A18AxEqOyXGcERZrznkfxwdRq3rg8BAoePqr8XLmzJ1eXIGw0aWOxku7qFRS3ws-fhKTwcqSsvqA=w1052-h592" alt="Bakery Life screenshot" loading="lazy"></div>
+        <div class="body">
+          <div class="game-top">
+            <img class="icon" src="https://play-lh.googleusercontent.com/oW8o4M1TVwWpe-Qu1qsZs8lmsxRMZJEhXfpUYlZz3eDN2BK1wBw1zY0oiK11VcXNoWP0OxDJ6VdcK3mGh4iL8Q=w240-h480" alt="Bakery Life icon">
+            <div><h3>Bakery Life</h3><small>Estoty · Android</small></div>
+          </div>
+          <div class="badges"><span class="badge hl">Solo developer</span><span class="badge">★ 4.4</span><span class="badge">10k+ downloads</span></div>
+          <p class="desc">A cozy 3D tycoon: bake, serve customers and grow a small bakery into a thriving business.</p>
+          <ul class="contrib"><li>Prototype, architecture, gameplay, UI, SDKs, optimization, release</li></ul>
+          <span class="link">View on Google Play →</span>
+        </div>
+      </a>
+      <a class="card reveal" href="https://play.google.com/store/apps/details?id=com.colormatch.parking" target="_blank" rel="noopener">
+        <div class="thumb duo"><img src="https://play-lh.googleusercontent.com/K7jvmQm3k3WjELeU-GLRyhR5QnWq1W565oKvlqAxhHQS8BcTGiGfUIng4RZnnzlpdzF9RCw-f-5lzqe29iGxiw=w1052-h592" alt="Crowd Parking screenshot" loading="lazy"><img src="https://play-lh.googleusercontent.com/N0u0_I5v729fZOXnq8e-G3q5P7ePy6hTKs2PqWeaaCHtMVlRJZc0YbSviRFvBhaM8SfI1hisw1WVh_VszPaiL7E=w1052-h592" alt="Crowd Parking screenshot" loading="lazy"></div>
+        <div class="body">
+          <div class="game-top">
+            <img class="icon" src="https://play-lh.googleusercontent.com/v_JFQjLNqrI8yKo6QtQONYyniSbUxcy0QHs7V4PVlO5F1O7OjTO0QoUk9onDqgS_km3RBG1MiFIil2G32TCa=w240-h480" alt="Crowd Parking icon">
+            <div><h3>Crowd Parking</h3><small>Estoty · Android</small></div>
+          </div>
+          <div class="badges"><span class="badge hl">Solo developer</span><span class="badge">★ 4.2</span><span class="badge">10k+ downloads</span></div>
+          <p class="desc">A color-matching puzzle game - sort crowds of passengers into the right train cars.</p>
+          <ul class="contrib"><li>Prototype, architecture, gameplay, UI, SDKs, optimization, release</li></ul>
+          <span class="link">View on Google Play →</span>
+        </div>
+      </a>
+    </div>
+    <a class="card wide reveal" style="margin-top:20px" href="https://play.google.com/store/apps/details?id=com.lifeof.ants" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://play-lh.googleusercontent.com/3ACoGPYio5fiZdQJpFebVxc-inJQyCXlOwLb00Ss9wzhonDJ5YIzE9rEhCeS7q9kIpjOXr5Sg8eCQuJtTXVLYw=w1052-h592" alt="Life of Ants gameplay" loading="lazy"></div>
+      <div class="body">
+        <div class="game-top">
+          <img class="icon" src="https://play-lh.googleusercontent.com/SDHsdAdpehcEALTEt_VWQ3LmNhaAuZ8Vc2YOqxiq5cTjrHI-cdJbY0YPERUewriJNzYAx7UgQit55jMqiGOg=w240-h480" alt="Life of Ants icon">
+          <div><h3>Life of Ants</h3><small>Estoty · Android, iOS</small></div>
+        </div>
+        <div class="badges"><span class="badge">Bug fixing</span><span class="badge">★ 4.6</span><span class="badge">100k+ downloads</span></div>
+        <p class="desc">An ant-colony management game. I worked on bug fixing and stability.</p>
+        <span class="link">View on Google Play →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="label mono">PC &amp; VR · GameFormatic</div><h2>Steam titles</h2></div>
+      <p>PC and VR games released on Steam - core systems, gameplay, UI, shaders &amp; VFX, editor tools and optimization.</p>
+    </div>
+    <div class="grid">
+      <a class="card reveal" href="https://store.steampowered.com/app/1674900/Train_Yard_Builder/" target="_blank" rel="noopener">
+        <div class="thumb"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1674900/header.jpg" alt="Train Yard Builder" loading="lazy"></div>
+        <div class="body">
+          <div class="game-top"><div><h3>Train Yard Builder</h3><small>GameFormatic · PC · 2024</small></div></div>
+          <div class="badges"><span class="badge">71% positive on Steam</span></div>
+          <p class="desc">A railway sandbox for building and customizing model train layouts.</p>
+          <span class="link">View on Steam →</span>
+        </div>
+      </a>
+      <a class="card reveal" href="https://store.steampowered.com/app/1387500/Offroad_Mechanic_Simulator/" target="_blank" rel="noopener">
+        <div class="thumb"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1387500/header.jpg" alt="Offroad Mechanic Simulator" loading="lazy"></div>
+        <div class="body">
+          <div class="game-top"><div><h3>Offroad Mechanic Simulator</h3><small>GameFormatic · PC · 2023</small></div></div>
+          <div class="badges"><span class="badge">70% positive on Steam</span></div>
+          <p class="desc">Repair and upgrade off-road vehicles, then test them on cliffs, rivers and mud.</p>
+          <span class="link">View on Steam →</span>
+        </div>
+      </a>
+      <a class="card reveal" href="https://store.steampowered.com/app/1887260/Timberman_VR/" target="_blank" rel="noopener">
+        <div class="thumb"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1887260/header.jpg" alt="Timberman VR" loading="lazy"></div>
+        <div class="body">
+          <div class="game-top"><div><h3>Timberman VR</h3><small>GameFormatic · VR · 2022</small></div></div>
+          <div class="badges"><span class="badge">82% positive on Steam</span></div>
+          <p class="desc">The classic addictive arcade game, rebuilt in 3D for virtual reality.</p>
+          <span class="link">View on Steam →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section id="skills" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="label mono">Toolbox</div><h2>Skills</h2></div>
+    </div>
+    <div class="skills">
+      <div class="skill reveal"><h4>Core</h4><div class="tags"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">Design patterns</span><span class="tag">SOLID</span></div></div>
+      <div class="skill reveal"><h4>Architecture</h4><div class="tags"><span class="tag">MVVM</span><span class="tag">Reactive properties</span><span class="tag">Zenject / Extenject</span><span class="tag">VContainer</span><span class="tag">Service Locator</span><span class="tag">Command</span><span class="tag">Facade</span><span class="tag">UniTask</span></div></div>
+      <div class="skill reveal"><h4>Unity systems</h4><div class="tags"><span class="tag">Addressables</span><span class="tag">Input System</span><span class="tag">Cinemachine</span><span class="tag">NavMesh</span><span class="tag">A* Pathfinding</span></div></div>
+      <div class="skill reveal"><h4>Gameplay &amp; graphics</h4><div class="tags"><span class="tag">Behaviour Trees</span><span class="tag">DOTween</span><span class="tag">Shaders</span><span class="tag">VFX</span><span class="tag">Character AI</span></div></div>
+      <div class="skill reveal"><h4>Performance</h4><div class="tags"><span class="tag">Profiling</span><span class="tag">FPS</span><span class="tag">Loading times</span><span class="tag">Memory</span><span class="tag">ECS / DOTS</span></div></div>
+      <div class="skill reveal"><h4>Mobile &amp; live-ops</h4><div class="tags"><span class="tag">Ads SDKs</span><span class="tag">In-app purchases</span><span class="tag">Analytics</span><span class="tag">Remote config</span><span class="tag">Cloud save</span><span class="tag">Android</span><span class="tag">iOS</span></div></div>
+      <div class="skill reveal"><h4>Tools</h4><div class="tags"><span class="tag">Editor tools</span><span class="tag">Odin Inspector</span><span class="tag">Git</span><span class="tag">Jira</span><span class="tag">Azure DevOps</span></div></div>
+      <div class="skill reveal"><h4>AI engineering</h4><div class="tags"><span class="tag">Claude Code</span><span class="tag">Custom Skills</span><span class="tag">Subagents</span><span class="tag">MCP for Unity</span><span class="tag">Agentic workflows</span></div></div>
+      <div class="skill reveal"><h4>Teamwork</h4><div class="tags"><span class="tag">Agile / Scrum</span><span class="tag">Code review</span><span class="tag">Tech docs</span><span class="tag">English daily</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="label mono">Career</div><h2>Experience</h2></div></div>
+    <div class="timeline">
+      <div class="job reveal">
+        <div class="when mono">01.2025 - present</div>
+        <div>
+          <h3>Unity Developer</h3><div class="co">Estoty · Vilnius</div>
+          <p>Mobile games for Android and iOS from scratch to release: prototyping, gameplay, project architecture, MVVM UI system, save system with cloud sync and versioning, SDK integration (ads, IAP, analytics), remote config, optimization and release builds. Introduced AI-assisted workflows to the team - custom Claude Code Skills and MCP for Unity.</p>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="when mono">01.2022 - 10.2025</div>
+        <div>
+          <h3>Unity Developer</h3><div class="co">GameFormatic S.A.</div>
+          <p>PC and VR games released on Steam: core systems, gameplay mechanics, UI, level setup, shaders and VFX, editor tools for the team, performance optimization and technical documentation.</p>
+        </div>
+      </div>
+      <div class="job reveal">
+        <div class="when mono">2019 - 2023</div>
+        <div>
+          <h3>B.Eng. in Computer Science</h3><div class="co">Cracow University of Technology</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <div class="label mono">Get in touch</div>
+    <h2>Let's make something fun.</h2>
+    <p>Open to new projects and opportunities.</p>
+    <div class="cta">
+      <a href="mailto:przemek21.warzecha@gmail.com" class="btn primary">przemek21.warzecha@gmail.com</a>
+      <a href="https://github.com/pwarzecha" target="_blank" rel="noopener" class="btn ghost">github.com/pwarzecha</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Przemysław Warzecha</span>
+    <span>Game images © their respective publishers.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: .12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
